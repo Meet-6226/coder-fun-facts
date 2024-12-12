@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Programming Fun Facts</title>
+    <style>
+        .fact-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .fact-title {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .fact-details {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        #facts-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programming Fun Facts</h1>
+    <div id="facts-container"></div>
+
+    <script>
+        const funFacts = {
+            "programming_fun_facts": [
+                {
+                    "id": 1,
+                    "fact": "The first programmer in history was Ada Lovelace",
+                    "year": 1840,
+                    "details": "She wrote the first algorithm for Charles Babbage's Analytical Engine"
+                },
+                {
+                    "id": 2,
+                    "fact": "Origin of the term 'bug' in programming",
+                    "year": 1947,
+                    "details": "Grace Hopper found an actual moth in Harvard Mark II computer",
+                    "historical_significance": "First documented case of a computer 'bug'"
+                },
+                {
+                    "id": 3,
+                    "fact": "First computer virus",
+                    "year": 1983,
+                    "name": "Elk Cloner",
+                    "creator": "15-year-old high school student"
+                },
+                {
+                    "id": 4,
+                    "fact": "Average programmer productivity",
+                    "details": "Writes 10-50 lines of code per day in production",
+                    "category": "productivity"
+                },
+                {
+                    "id": 5,
+                    "fact": "Most expensive bug in history",
+                    "year": 1999,
+                    "cost": "$125 million",
+                    "project": "Mars Climate Orbiter",
+                    "cause": "Metric vs Imperial units confusion"
+                }
+            ]
+        };
+
+        function displayFacts() {
+            const container = document.getElementById('facts-container');
+            funFacts.programming_fun_facts.forEach(fact => {
+                const factCard = document.createElement('div');
+                factCard.className = 'fact-card';
+                
+                let factContent = `
+                    <div class="fact-title">${fact.fact}</div>
+                    <div class="fact-details">
+                        ${fact.year ? `Year: ${fact.year}<br>` : ''}
+                        ${fact.details ? `Details: ${fact.details}<br>` : ''}
+                        ${fact.historical_significance ? `Historical Significance: ${fact.historical_significance}<br>` : ''}
+                        ${fact.cost ? `Cost: ${fact.cost}<br>` : ''}
+                        ${fact.cause ? `Cause: ${fact.cause}` : ''}
+                    </div>
+                `;
+                
+                factCard.innerHTML = factContent;
+                container.appendChild(factCard);
+            });
+        }
+
+        // Load facts when page loads
+        window.onload = displayFacts;
+    </script>
+</body>
+</html>
